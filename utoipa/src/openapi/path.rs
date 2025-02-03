@@ -320,51 +320,65 @@ impl PathItem {
             HttpMethod::Get => {
                 path_item.get = Some(operation.clone());
                 if let Some(ref mut op) = path_item.get {
-                    op.operation_id = Some(format!("{}_get", &op.operation_id.as_ref().unwrap()));
+                    op.operation_id = Some(
+                        format!("{}_get", &op.operation_id.as_ref().unwrap()).replace("/", "_"),
+                    );
                 }
             }
             HttpMethod::Put => {
                 path_item.put = Some(operation.clone());
                 if let Some(ref mut op) = path_item.put {
-                    op.operation_id = Some(format!("{}_put", &op.operation_id.as_ref().unwrap()));
+                    op.operation_id = Some(
+                        format!("{}_put", &op.operation_id.as_ref().unwrap()).replace("/", "_"),
+                    );
                 }
             }
             HttpMethod::Post => {
                 path_item.post = Some(operation.clone());
                 if let Some(ref mut op) = path_item.post {
-                    op.operation_id = Some(format!("{}_post", &op.operation_id.as_ref().unwrap()));
+                    op.operation_id = Some(
+                        format!("{}_post", &op.operation_id.as_ref().unwrap()).replace("/", "_"),
+                    );
                 }
             }
             HttpMethod::Delete => {
                 path_item.delete = Some(operation.clone());
                 if let Some(ref mut op) = path_item.delete {
-                    op.operation_id =
-                        Some(format!("{}_delete", &op.operation_id.as_ref().unwrap()));
+                    op.operation_id = Some(
+                        format!("{}_delete", &op.operation_id.as_ref().unwrap()).replace("/", "_"),
+                    );
                 }
             }
             HttpMethod::Options => {
                 path_item.options = Some(operation.clone());
                 if let Some(ref mut op) = path_item.options {
-                    op.operation_id =
-                        Some(format!("{}_options", &op.operation_id.as_ref().unwrap()));
+                    op.operation_id = Some(
+                        format!("{}_options", &op.operation_id.as_ref().unwrap()).replace("/", "_"),
+                    );
                 }
             }
             HttpMethod::Head => {
                 path_item.head = Some(operation.clone());
                 if let Some(ref mut op) = path_item.head {
-                    op.operation_id = Some(format!("{}_head", &op.operation_id.as_ref().unwrap()));
+                    op.operation_id = Some(
+                        format!("{}_head", &op.operation_id.as_ref().unwrap()).replace("/", "_"),
+                    );
                 }
             }
             HttpMethod::Patch => {
                 path_item.patch = Some(operation.clone());
                 if let Some(ref mut op) = path_item.patch {
-                    op.operation_id = Some(format!("{}_patch", &op.operation_id.as_ref().unwrap()));
+                    op.operation_id = Some(
+                        format!("{}_patch", &op.operation_id.as_ref().unwrap()).replace("/", "_"),
+                    );
                 }
             }
             HttpMethod::Trace => {
                 path_item.trace = Some(operation.clone());
                 if let Some(ref mut op) = path_item.trace {
-                    op.operation_id = Some(format!("{}_trace", &op.operation_id.as_ref().unwrap()));
+                    op.operation_id = Some(
+                        format!("{}_trace", &op.operation_id.as_ref().unwrap()).replace("/", "_"),
+                    );
                 }
             }
         };

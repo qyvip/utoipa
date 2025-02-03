@@ -398,28 +398,13 @@ impl<'p> ToTokensDiagnostics for Path<'p> {
                 }
             });
 
-        let path_with_context_path_str = context_path_opt
-            .map(|context_path| format!("{}{}", context_path, path))
-            .unwrap_or_else(|| format!("{}", path));
+        let path_with_context_path_str = path_with_context_path.clone().into_token_stream();
 
         let operation_id = self
             .path_attr
             .operation_id
             .clone()
-            .or_else(|| {
-                Some(
-                    ExprLit {
-                        attrs: vec![],
-                        lit: Lit::Str(LitStr::new(
-                            &path_with_context_path_str
-                                .replace("\"", "")
-                                .replace("/", "_"),
-                            Span::call_site(),
-                        )),
-                    }
-                    .into(),
-                )
-            })
+            .or_else(|| Some(syn::Expr::Verbatim(path_with_context_path_str.clone())))
             .ok_or_else(|| {
                 Diagnostics::new("operation id is not defined for path")
                     .help(format!(
