@@ -2,13 +2,13 @@ use std::borrow::Cow;
 use std::ops::Deref;
 use std::{io::Error, str::FromStr};
 
-use proc_macro2::{Ident, Span, TokenStream as TokenStream2};
+use proc_macro2::{Ident, TokenStream as TokenStream2};
 use quote::{quote, quote_spanned, ToTokens};
 use syn::punctuated::Punctuated;
 use syn::spanned::Spanned;
 use syn::token::Comma;
+use syn::Expr;
 use syn::{parenthesized, parse::Parse, Token};
-use syn::{Expr, ExprLit, Lit, LitStr};
 
 use crate::component::{ComponentSchema, GenericType, TypeTree};
 use crate::{
